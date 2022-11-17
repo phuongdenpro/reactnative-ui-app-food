@@ -2,10 +2,10 @@ import 'react-native-gesture-handler';
 import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
+import { NativeBaseProvider } from 'native-base';
 // import LoginScreen from './src/screen/login'
 // import ForgotScreen from './src/screen/forgot'
 // import ForgotVerifyScreen from './src/screen/forgot-verify'
-// import { NativeBaseProvider } from 'native-base';
 // import HomeScreen from './src/screen/home';
 // import ChangePassScreen from './src/screen/changePass';
 // import OrderDetail from './src/components/order/order_detail';

@@ -18,14 +18,12 @@ export default LoginScreen = (props) => {
     const [isLoading, setIsLoading] = useState(false)
 
     const onLogin = async () => {
-        console.log("login...")
         setIsLoading(true)
         try {
             const res = await api.account.login({
                 phone: phone,
                 password: password,
             })
-            // console.log(res.data)
             if (res.data.code == 1) {
                 api.account.save_token(res)
                 handleVerifyCustomer()
