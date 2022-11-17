@@ -6,13 +6,13 @@ import { NativeBaseProvider } from 'native-base';
 import LoginScreen from './src/screen/login'
 import ForgotScreen from './src/screen/forgot'
 import ForgotVerifyScreen from './src/screen/forgot-verify'
-// import HomeScreen from './src/screen/home';
+import HomeScreen from './src/screen/home';
 import ChangePassScreen from './src/screen/change-pass';
-// import OrderDetail from './src/components/order/order_detail';
-// import OrderDetailScreen from './src/components/order/order_detail';
-// import BarcodeScanner from './src/components/barcode/barcode_scanner';
-// import ProductDetailScreen from './src/screen/product_detail';
-// import PromotionDetailScreen from './src/screen/promotion_detail';
+import OrderDetail from './src/components/order/order_detail';
+import OrderDetailScreen from './src/components/order/order_detail';
+import BarcodeScanner from './src/components/barcode/barcode_scanner';
+import ProductDetailScreen from './src/screen/product_detail';
+import PromotionDetailScreen from './src/screen/promotion_detail';
 import WelcomeScreen from './src/screen/welcome';
 
 const Stack = createStackNavigator();
@@ -41,7 +41,7 @@ export default function App() {
           <Stack.Screen name="ChangePassword" component={ChangePassScreen}
             options={{ title: 'Đổi mật khẩu' }} />
 
-          {/* <Stack.Screen name="Home" component={HomeScreen}
+          <Stack.Screen name="Home" component={HomeScreen}
             options={{ headerShown: false }} />
 
           <Stack.Screen name="OrderDetail" component={OrderDetailScreen}
@@ -54,7 +54,7 @@ export default function App() {
             options={{ title: 'Chi tiết sản phẩm' }} />
 
           <Stack.Screen name="PromotionDetail" component={PromotionDetailScreen}
-            options={{ title: 'Khuyến mãi' }} /> */}
+            options={{ title: 'Khuyến mãi' }} />
 
         </Stack.Navigator>
       </NavigationContainer>

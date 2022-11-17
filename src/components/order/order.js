@@ -1,8 +1,5 @@
 import { View, Text, Pressable, StyleSheet, FlatList } from "react-native";
 import React, { useEffect, useState } from "react";
-import { Box, Center, HStack, ScrollView, VStack, Image } from "native-base";
-import { SwipeListView } from "react-native-swipe-list-view";
-import { FontAwesome } from "@expo/vector-icons"
 import OrderItem from "./order_item";
 import api from "../../utils/apis"
 import EmptyBox from "../empty_box";
