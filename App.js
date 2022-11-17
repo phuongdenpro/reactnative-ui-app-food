@@ -3,11 +3,11 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { NativeBaseProvider } from 'native-base';
-// import LoginScreen from './src/screen/login'
-// import ForgotScreen from './src/screen/forgot'
-// import ForgotVerifyScreen from './src/screen/forgot-verify'
+import LoginScreen from './src/screen/login'
+import ForgotScreen from './src/screen/forgot'
+import ForgotVerifyScreen from './src/screen/forgot-verify'
 // import HomeScreen from './src/screen/home';
-// import ChangePassScreen from './src/screen/changePass';
+import ChangePassScreen from './src/screen/change-pass';
 // import OrderDetail from './src/components/order/order_detail';
 // import OrderDetailScreen from './src/components/order/order_detail';
 // import BarcodeScanner from './src/components/barcode/barcode_scanner';
@@ -29,7 +29,7 @@ export default function App() {
           <Stack.Screen name="Welcome" component={WelcomeScreen}
             options={{ headerShown: false }} />
 
-          {/* <Stack.Screen name="Login" component={LoginScreen}
+          <Stack.Screen name="Login" component={LoginScreen}
             options={{ title: 'Đăng nhập', headerShown: false }} />
 
           <Stack.Screen name="Forgot" component={ForgotScreen}
@@ -41,7 +41,7 @@ export default function App() {
           <Stack.Screen name="ChangePassword" component={ChangePassScreen}
             options={{ title: 'Đổi mật khẩu' }} />
 
-          <Stack.Screen name="Home" component={HomeScreen}
+          {/* <Stack.Screen name="Home" component={HomeScreen}
             options={{ headerShown: false }} />
 
           <Stack.Screen name="OrderDetail" component={OrderDetailScreen}
