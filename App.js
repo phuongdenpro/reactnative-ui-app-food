@@ -16,11 +16,13 @@ import ProductDetailScreen from "./src/screens/product_detail";
 import PromotionDetailScreen from "./src/screens/promotion_detail";
 import WelcomeScreen from "./src/screens/welcome";
 import BottomNavigator from "./src/navigation/BottomNavigator";
+import { OrderProvider } from "./src/context/orderContext";
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
+    <OrderProvider>
     <NativeBaseProvider>
       <NavigationContainer>
         <Stack.Navigator
@@ -72,6 +74,7 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
+    </OrderProvider>
   );
 }
 

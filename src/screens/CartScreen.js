@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {SafeAreaView, StyleSheet, View, Text, Image} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import COLORS from '../consts/colors';
 import foods from '../consts/foods';
 import {PrimaryButton} from '../components/Button';
+import { OrderContext } from '../context/orderContext';
 
 const CartScreen = ({navigation}) => {
+  
+  const {listOrders} = useContext(OrderContext)
+  const list = [...listOrders]
+  var total = list.reduce( (money,item) => money+ item.price,0)
+
   const CartCard = ({item}) => {
     return (
       <View style={style.cartCard}>
@@ -25,7 +31,7 @@ const CartScreen = ({navigation}) => {
           <Text style={{fontSize: 17, fontWeight: 'bold'}}>${item.price}</Text>
         </View>
         <View style={{marginRight: 20, alignItems: 'center'}}>
-          <Text style={{fontWeight: 'bold', fontSize: 18}}>3</Text>
+          <Text style={{fontWeight: 'bold', fontSize: 18}}>{item.quantity}</Text>
           <View style={style.actionBtn}>
             <Icon name="remove" size={25} color={COLORS.white} />
             <Icon name="add" size={25} color={COLORS.white} />
@@ -43,7 +49,7 @@ const CartScreen = ({navigation}) => {
       <FlatList
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{paddingBottom: 80}}
-        data={foods}
+        data={listOrders}
         renderItem={({item}) => <CartCard item={item} />}
         ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
         ListFooterComponent={() => (
@@ -57,7 +63,7 @@ const CartScreen = ({navigation}) => {
               <Text style={{fontSize: 18, fontWeight: 'bold'}}>
                 Total Price
               </Text>
-              <Text style={{fontSize: 18, fontWeight: 'bold'}}>$50</Text>
+              <Text style={{fontSize: 18, fontWeight: 'bold'}}>{total} $</Text>
             </View>
             <View style={{marginHorizontal: 30}}>
               <PrimaryButton title="CHECKOUT" />
