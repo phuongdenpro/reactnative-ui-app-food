@@ -1,19 +1,56 @@
-import React, { useContext } from 'react';
-import {SafeAreaView, StyleSheet, View, Text, Image} from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
+import {SafeAreaView, StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import COLORS from '../consts/colors';
-import foods from '../consts/foods';
 import {PrimaryButton} from '../components/Button';
 import { OrderContext } from '../context/orderContext';
+import { AntDesign } from '@expo/vector-icons';
 
 const CartScreen = ({navigation}) => {
   
-  const {listOrders} = useContext(OrderContext)
+  const {listOrders,setListOrders} = useContext(OrderContext)
   const list = [...listOrders]
-  var total = list.reduce( (money,item) => money+ item.price,0)
 
-  const CartCard = ({item}) => {
+  var sum = list.reduce( (money,item) => money+ item.price,0)
+  const [total,setTotal] = useState(sum)
+
+  const OneFood = ({item}) => {
+   
+    const [price,setPrice] = useState(item.price)
+    const [amout,setAmout] = useState(item.quantity)
+    const itemb = {...item}
+    const singleItemCost = itemb.price/itemb.quantity
+
+    useEffect(()=>{
+      // setTotal(sum)
+      var sum = list.reduce((money,item)=> money + item.price,0)
+      setTotal(sum)
+    },[item.quantity])
+
+    const onpressIncrease = ()=>{
+        setAmout(amout+1)
+        setPrice(singleItemCost * (amout+1) )
+        item.quantity = (amout+1)
+        item.price = singleItemCost * (amout+1)
+    }
+    const onpressDecrease = ()=>{
+        if(amout == 1){
+            // setAmout(1)
+          const i = list.findIndex(e => e.id == item.id)
+          // console.log(i)
+          if(i > -1){
+            list.splice(i,1)
+            setListOrders(list)
+          }
+        }else{
+            setAmout(amout-1)
+            setPrice(singleItemCost * (amout-1))
+            item.quantity = (amout -1)
+            item.price = singleItemCost * (amout -1)
+        }
+    }
+
     return (
       <View style={style.cartCard}>
         <Image source={item.image} style={{height: 80, width: 80}} />
@@ -33,8 +70,13 @@ const CartScreen = ({navigation}) => {
         <View style={{marginRight: 20, alignItems: 'center'}}>
           <Text style={{fontWeight: 'bold', fontSize: 18}}>{item.quantity}</Text>
           <View style={style.actionBtn}>
-            <Icon name="remove" size={25} color={COLORS.white} />
-            <Icon name="add" size={25} color={COLORS.white} />
+            <TouchableOpacity onPress={onpressDecrease}>
+              <AntDesign name="minuscircle" size={24} color="black" />
+            </TouchableOpacity>
+            {/* <Text style= {style.amout}>{amout}</Text> */}
+            <TouchableOpacity onPress={onpressIncrease}>
+              <AntDesign name="pluscircle" size={24} color="black" />
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -49,8 +91,8 @@ const CartScreen = ({navigation}) => {
       <FlatList
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{paddingBottom: 80}}
-        data={listOrders}
-        renderItem={({item}) => <CartCard item={item} />}
+        data={list}
+        renderItem={({item}) => <OneFood item={item} />}
         ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
         ListFooterComponent={() => (
           <View>
@@ -61,9 +103,9 @@ const CartScreen = ({navigation}) => {
                 marginVertical: 15,
               }}>
               <Text style={{fontSize: 18, fontWeight: 'bold'}}>
-                Total Price
+                Total Price:
               </Text>
-              <Text style={{fontSize: 18, fontWeight: 'bold'}}>{total} $</Text>
+              <Text style={{fontSize: 18, fontWeight: 'bold',color:COLORS.primary}}>{total} $</Text>
             </View>
             <View style={{marginHorizontal: 30}}>
               <PrimaryButton title="CHECKOUT" />
@@ -94,12 +136,13 @@ const style = StyleSheet.create({
   },
   actionBtn: {
     width: 80,
-    height: 30,
+    height: 35,
     backgroundColor: COLORS.primary,
     borderRadius: 30,
     paddingHorizontal: 5,
+    paddingVertical:5,
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignContent: 'center',
   },
 });
