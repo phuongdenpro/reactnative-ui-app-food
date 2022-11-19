@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import {SafeAreaView, StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native';
+import {SafeAreaView, StyleSheet, View, Text, Image, TouchableOpacity, Alert} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import COLORS from '../consts/colors';
 import {PrimaryButton} from '../components/Button';
 import { OrderContext } from '../context/orderContext';
 import { AntDesign } from '@expo/vector-icons';
-
 const CartScreen = ({navigation}) => {
   
   const {listOrders,setListOrders} = useContext(OrderContext)
@@ -108,7 +107,9 @@ const CartScreen = ({navigation}) => {
               <Text style={{fontSize: 18, fontWeight: 'bold',color:COLORS.primary}}>{total} $</Text>
             </View>
             <View style={{marginHorizontal: 30}}>
-              <PrimaryButton title="CHECKOUT" />
+              <PrimaryButton title="CHECKOUT" onPress={()=>{
+                Alert.alert('thanks for shopping')
+              }} />
             </View>
           </View>
         )}

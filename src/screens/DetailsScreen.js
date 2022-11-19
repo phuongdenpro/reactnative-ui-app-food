@@ -6,11 +6,16 @@ import COLORS from '../consts/colors';
 import {SecondaryButton} from '../components/Button';
 import { AntDesign } from '@expo/vector-icons';
 import { OrderContext } from '../context/orderContext';
+import { FavoriteContext } from '../context/favoriteContext';
+
 const DetailsScreen = ({navigation, route}) => {
   const item = route.params;
   const {listOrders,setListOrders} = useContext(OrderContext)
   var newListOrders = [...listOrders]
   const buyItem = {...item}
+
+  const {listFavorites,setListFavorites} = useContext(FavoriteContext)
+  const favList = [...listFavorites]
 
   const [price,setPrice] = useState(item.price)
   const [amout,setAmout] = useState(1)
@@ -25,6 +30,11 @@ const DetailsScreen = ({navigation, route}) => {
             setAmout(amout-1)
             setPrice(item.price * (amout-1))
         }
+    }
+    const onPressLove = ()=>{
+      favList.push(item)
+      console.log(favList)
+      setListFavorites(favList)
     }
 
   return (
@@ -54,7 +64,7 @@ const DetailsScreen = ({navigation, route}) => {
               {item.name}
             </Text>
             <View style={style.iconContainer}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={onPressLove}>
                 <Icon name="favorite-border" color={COLORS.primary} size={25} />
               </TouchableOpacity>
             </View>

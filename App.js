@@ -17,30 +17,29 @@ import PromotionDetailScreen from "./src/screens/promotion_detail";
 import WelcomeScreen from "./src/screens/welcome";
 import BottomNavigator from "./src/navigation/BottomNavigator";
 import { OrderProvider } from "./src/context/orderContext";
+import { FavoriteProvider } from "./src/context/favoriteContext";
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <OrderProvider>
+    <FavoriteProvider>
     <NativeBaseProvider>
       <NavigationContainer>
-        <Stack.Navigator
+        <Stack.Navigator screenOptions={{headerShown:false}}
           initialRouteName="Welcome"
-          //   screenOptions={{
-          //     headerShown: false
-          // }}
         >
           <Stack.Screen
             name="Welcome"
             component={WelcomeScreen}
-            options={{ headerShown: false }}
+            
           />
 
           <Stack.Screen
             name="Login"
             component={LoginScreen}
-            options={{ title: "Đăng nhập", headerShown: false }}
+            options={{ title: "Đăng nhập" }}
           />
 
           <Stack.Screen
@@ -64,16 +63,17 @@ export default function App() {
           <Stack.Screen
             name="Home"
             component={BottomNavigator}
-            options={{ headerShown: false }}
+          
           />
           <Stack.Screen
             name="DetailsScreen"
             component={DetailsScreen}
-            options={{ headerShown: false }}
+           
           />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
+    </FavoriteProvider>
     </OrderProvider>
   );
 }
