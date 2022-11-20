@@ -32,7 +32,7 @@ const HomeScreen = ({navigation}) => {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={style.categoriesListContainer}>
         {categories.map((category, index) => (
-          <TouchableOpacity
+          <Pressable
             key={index}
             activeOpacity={0.8}
             onPress={() => setSelectedCategoryIndex(index)}>
@@ -63,7 +63,7 @@ const HomeScreen = ({navigation}) => {
                 {category.name}
               </Text>
             </View>
-          </TouchableOpacity>
+          </Pressable>
         ))}
       </ScrollView>
     );
