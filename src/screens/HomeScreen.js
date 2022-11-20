@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Dimensions,
   Image,
@@ -12,8 +12,6 @@ import {
   FlatList,
   ScrollView,
   TextInput,
-  TouchableHighlight,
-  TouchableOpacity,
 } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import COLORS from '../consts/colors';
@@ -24,6 +22,7 @@ const cardWidth = width / 2 - 20;
 
 const HomeScreen = ({navigation}) => {
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
+  const [data,setData] = useState(foods)
 
   const ListCategories = () => {
     return (
@@ -35,7 +34,12 @@ const HomeScreen = ({navigation}) => {
           <Pressable
             key={index}
             activeOpacity={0.8}
-            onPress={() => setSelectedCategoryIndex(index)}>
+            onPress={() =>{ 
+              setSelectedCategoryIndex(index)
+              const newData = foods.filter(e => e.name.includes(category.name))            
+              // console.log(newData)
+              setData(newData)
+              }}>
             <View
               style={{
                 backgroundColor:
@@ -132,6 +136,11 @@ const HomeScreen = ({navigation}) => {
           <TextInput
             style={{flex: 1, fontSize: 18}}
             placeholder="Search for food"
+            onChangeText={(name)=>{
+              const newData = foods.filter(e => e.name.includes(name));
+              // console.log(newData)
+              setData(newData)
+            }}
           />
         </View>
         <View style={style.sortBtn}>
@@ -144,7 +153,7 @@ const HomeScreen = ({navigation}) => {
       <FlatList
         showsVerticalScrollIndicator={false}
         numColumns={2}
-        data={foods}
+        data={data}
         renderItem={({item}) => <Card food={item} />}
       />
     </SafeAreaView>
