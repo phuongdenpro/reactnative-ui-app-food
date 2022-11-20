@@ -24,22 +24,25 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <OrderProvider>
-    <FavoriteProvider>
+      <FavoriteProvider>
     <NativeBaseProvider>
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{headerShown:false}}
+        <Stack.Navigator
           initialRouteName="Welcome"
+          //   screenOptions={{
+          //     headerShown: false
+          // }}
         >
           <Stack.Screen
             name="Welcome"
             component={WelcomeScreen}
-            
+            options={{ headerShown: false }}
           />
 
           <Stack.Screen
             name="Login"
             component={LoginScreen}
-            options={{ title: "Đăng nhập" }}
+            options={{ title: "Đăng nhập", headerShown: false }}
           />
 
           <Stack.Screen
@@ -63,12 +66,12 @@ export default function App() {
           <Stack.Screen
             name="Home"
             component={BottomNavigator}
-          
+            options={{ headerShown: false }}
           />
           <Stack.Screen
             name="DetailsScreen"
             component={DetailsScreen}
-           
+            options={{ headerShown: false }}
           />
         </Stack.Navigator>
       </NavigationContainer>

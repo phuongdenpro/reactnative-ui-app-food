@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Dimensions,
   Image,
+  Pressable,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -69,7 +70,7 @@ const HomeScreen = ({navigation}) => {
   };
   const Card = ({food}) => {
     return (
-      <TouchableHighlight
+      <Pressable
         underlayColor={COLORS.white}
         activeOpacity={0.9}
         onPress={() => navigation.navigate('DetailsScreen', food)}>
@@ -98,7 +99,7 @@ const HomeScreen = ({navigation}) => {
             </View>
           </View>
         </View>
-      </TouchableHighlight>
+      </Pressable>
     );
   };
   return (
