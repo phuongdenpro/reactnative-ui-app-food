@@ -14,7 +14,7 @@ const Tab = createBottomTabNavigator();
 const BottomNavigator = () => {
   return (
     <Tab.Navigator
-      tabBarOptions={{
+      screenOptions ={{
         style: {
           height: 55,
           borderTopWidth: 0,
@@ -22,7 +22,8 @@ const BottomNavigator = () => {
         },
         showLabel: false,
         activeTintColor: COLORS.primary,
-      }}>
+      }}
+      >
       <Tab.Screen
         name="HomeScreen"
         component={HomeScreen}

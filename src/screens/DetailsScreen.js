@@ -33,7 +33,6 @@ const DetailsScreen = ({navigation, route}) => {
     }
     const onPressLove = ()=>{
       favList.push(item)
-      console.log(favList)
       setListFavorites(favList)
     }
 
