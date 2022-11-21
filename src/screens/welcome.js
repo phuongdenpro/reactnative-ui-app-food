@@ -47,17 +47,17 @@ export default WelcomeScreen = () => {
 
     const handleVerifyCustomer = async () => {
         // try{
-        //     const res = await api.account.get_info()
-        //     if(res.data.code == 1){
-        //         api.account.save_info(res)
+            // const res = await api.account.get_info()
+            // if(res.data.code == 1){
+            //     api.account.save_info(res)
                 navigation.navigate("Home")
         //         return
         //     }
-            // navigation.navigate("Login")
-        // }catch(error) {
-        //     console.log('Failed:', error)
         //     navigation.navigate("Login")
-        // }
+        // // }catch(error) {
+        // //     console.log('Failed:', error)
+        // //     navigation.navigate("Login")
+        // // }
     }
 
     const styles = StyleSheet.create({

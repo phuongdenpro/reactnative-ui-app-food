@@ -39,7 +39,7 @@ const BottomNavigator = () => {
         options={{
           tabBarIcon: ({color}) => (
             <Icon name="favorite" color={color} size={28} />
-          ),
+          ),headerShown: false 
         }}
       />
       
