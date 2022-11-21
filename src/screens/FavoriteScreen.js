@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { SafeAreaView, StyleSheet, View, Text, Image,TouchableOpacity } from "react-native";
+import { SafeAreaView, StyleSheet, View, Text, Image,TouchableOpacity,Pressable } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import COLORS from "../consts/colors";
@@ -14,6 +14,10 @@ const FavoriteScreen = ({ navigation }) => {
 
   const OneFood = ({item}) => {
     return (
+      <Pressable
+        underlayColor={COLORS.white}
+        activeOpacity={0.9}
+        onPress={() => navigation.navigate('DetailsScreen', item)}>
       <View style={style.cartCard}>
         <Image source={item.image} style={{height: 80, width: 80}} />
         <View
@@ -38,6 +42,7 @@ const FavoriteScreen = ({ navigation }) => {
                   if(i > -1){
                     list.splice(i,1)
                     setListFavorites(list)
+                    item.like = false;
                   }    
             }}>
               <MaterialCommunityIcons name="delete-off" size={24} color="black" />
@@ -45,6 +50,8 @@ const FavoriteScreen = ({ navigation }) => {
           </View>
         </View>
       </View>
+      </Pressable>
+      
     );
   };
   return (

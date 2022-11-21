@@ -87,6 +87,7 @@ const HomeScreen = ({navigation}) => {
             <Text style={{fontSize: 14, color: COLORS.grey, marginTop: 2}}>
               {food.ingredients}
             </Text>
+            
           </View>
           <View
             style={{
