@@ -8,6 +8,7 @@ import HomeScreen from '../screens/HomeScreen';
 import CartScreen from '../screens/CartScreen';
 import FavoriteScreen from '../screens/FavoriteScreen'
 import ProfileScreen from "../screens/profile";
+import SerchScreen from '../screens/Search';
 
 const Tab = createBottomTabNavigator();
 
@@ -45,7 +46,7 @@ const BottomNavigator = () => {
       
       <Tab.Screen
         name="Search"
-        component={HomeScreen}
+        component={SerchScreen}
         options={{
           tabBarIcon: ({color}) => (
             <View
@@ -63,7 +64,7 @@ const BottomNavigator = () => {
               }}>
               <Icon name="search" color={COLORS.primary} size={28} />
             </View>
-          ),
+          ),headerShown: false 
         }}
       />
       <Tab.Screen

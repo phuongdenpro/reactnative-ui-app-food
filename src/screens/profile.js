@@ -24,7 +24,7 @@ const ProfileScreen = () => {
 
     return (
         <View style={{
-            flex: 1,
+            flex: 1
         }}>
             <View style={{
                 backgroundColor: 'white',
@@ -88,7 +88,8 @@ const ProfileScreen = () => {
 
 const styles = StyleSheet.create({
     text: {
-        fontSize: 15,
+        fontSize: 17,
+        fontWeight:'bold'
         // fontWeight: 'bold'
     },
 
@@ -106,6 +107,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         borderBottomWidth: 1,
         borderBottomColor: '#ddd',
+        // backgroundColor:'#F9813A'
     }
 })
 

@@ -151,7 +151,7 @@ const CartScreen = ({ navigation }) => {
                       {
                         text: "OK",
                         onPress: () => {
-                          Alert.alert("Order Success!");
+                          Alert.alert("Checkout Success!");
                           setListOrders([]);
                           setTotal(0);
                         },

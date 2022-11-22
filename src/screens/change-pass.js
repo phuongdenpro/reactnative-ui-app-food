@@ -108,13 +108,14 @@ const ChangePassScreen = ({ phone }) => {
                         onChangeText={setReNewPassword}>
                     </InputItem>
                 </View>
-                <Button type="primary" style={{
+                <Button style={{
                         marginTop: 10,
                         marginBottom: 10,
-                        marginHorizontal: 10
+                        marginHorizontal: 10,
+                        backgroundColor:'#F9813A',
                     }}
                     onPress={onChangePassword}
-                >Đổi mật khẩu</Button>
+                ><Text style={{fontSize:17, fontWeight:'bold'}}>Đổi mật khẩu</Text></Button>
             </View>
         </View>
     )
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
     textIn: {
         fontSize: 20,
         fontStyle: 'italic',
-        marginTop: 40
+        marginTop: 40,
     },
 
     inputform: {

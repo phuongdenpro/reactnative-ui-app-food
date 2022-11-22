@@ -11,6 +11,7 @@ const FavoriteScreen = ({ navigation }) => {
 
   const {listFavorites,setListFavorites} = useContext(FavoriteContext)
   const list = [...listFavorites]
+  
 
   const OneFood = ({item}) => {
     return (
@@ -93,6 +94,7 @@ const style = StyleSheet.create({
     paddingHorizontal: 10,
     flexDirection: 'row',
     alignItems: 'center',
+    marginTop:20
   },
   actionBtn: {
     width: 80,
