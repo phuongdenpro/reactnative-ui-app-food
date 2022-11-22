@@ -136,7 +136,28 @@ const DetailsScreen = ({ navigation, route }) => {
               onPress={() => {
                 buyItem.quantity = amout;
                 buyItem.price = price;
-                newListOrders.push(buyItem);
+                var found = false;
+                for (var i = 0; i < newListOrders.length; i++) {
+                  if (newListOrders[i].name == buyItem.name) {
+                    found = true;
+                    break;
+                  }
+                }
+                if (!found) {
+                  newListOrders.push(buyItem);
+                } else {
+                  const i = newListOrders.findIndex(
+                    (e) => e.name == buyItem.name
+                  );
+                  if (i > -1) {
+                    newListOrders[i].quantity =
+                      buyItem.quantity + newListOrders[i].quantity;
+                    newListOrders[i].price =
+                      Number(price) + Number(newListOrders[i].price);
+                  }
+                }
+
+                // newListOrders.push(buyItem);
                 setListOrders(newListOrders);
                 ToastAndroid.showWithGravityAndOffset(
                   "Add to cart successfully!",
@@ -194,10 +215,10 @@ const style = StyleSheet.create({
     right: 0,
     paddingVertical: 8,
     fontSize: 17,
-    fontWeight:'bold',
+    fontWeight: "bold",
     // color: COLORS.red,
     // backgroundColor:COLORS.white,
-    borderRadius:20
+    borderRadius: 20,
   },
   amout: {
     paddingHorizontal: 16,

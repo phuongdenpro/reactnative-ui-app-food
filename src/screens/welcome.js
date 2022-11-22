@@ -65,7 +65,7 @@ export default WelcomeScreen = () => {
             flex: 1,
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: '#8de0f4',
+            backgroundColor: '#F9813A',
             opacity: backgroundFade,
         },
         logo: {
@@ -98,7 +98,7 @@ export default WelcomeScreen = () => {
                             fontSize: 25,
                             textAlign: 'center',
                             fontWeight: '500'
-                        }}>Siêu thị mini NT</Text>
+                        }}>Bakery NBP</Text>
                     </Animated.View>
                     <Animated.View style={{
                         transform: [{ translateY: 300 }],
