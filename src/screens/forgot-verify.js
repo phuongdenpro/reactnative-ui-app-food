@@ -41,7 +41,7 @@ export default ForgotVerifyScreen = (props) => {
                 phone: phone,
                 code: value
             })
-            // console.log("onVerify", res)
+            console.log("onVerify", res)
             if (res.data.code == 1) {
                 ToastAndroid.showWithGravityAndOffset(
                     "Xác thực thành công, mật khẩu sẽ được gửi đến số điện thoại của bạn!",
@@ -90,10 +90,11 @@ export default ForgotVerifyScreen = (props) => {
                     style={{
                         flex: 1,
                         alignSelf: 'stretch',
-                        width: win.width - 50,
+                        width: 300,
                         height: 300,
+                        resizeMode: "contain"
                     }}
-                    source={require("../../assets/Discount-rafiki.png")}
+                    source={require("../../assets/banner3.png")}
                 />
             </View>
             <View style={{
@@ -107,7 +108,9 @@ export default ForgotVerifyScreen = (props) => {
                     placeholder='Mã OTP'></InputItem>
                 <Button type="primary" style={{
                     marginTop: 10,
-                    marginBottom: 10
+                    marginBottom: 10,
+                    backgroundColor: "#F9813A",
+                    borderColor: "black",
                 }}
                     onPress={onVerify}>Xác thực OTP</Button>
                 <View

@@ -69,10 +69,11 @@ export default ForgotScreen = (props) => {
                     style={{
                         flex: 1,
                         alignSelf: 'stretch',
-                        width: win.width - 50,
+                        width: 300,
                         height: 300,
+                        resizeMode: "contain"
                     }}
-                    source={require("../../assets/Discount-rafiki.png")}
+                    source={require("../../assets/banner2.png")}
                 />
             </View>
             <View style={{
@@ -85,7 +86,9 @@ export default ForgotScreen = (props) => {
                 </InputItem>
                 <Button type="primary" style={{
                     marginTop: 10,
-                    marginBottom: 10
+                    marginBottom: 10,
+                    backgroundColor: "#F9813A",
+                    borderColor: "black",
                 }} onPress={onSendOTP}>Gửi mã OTP</Button>
                 <View
                     style={{

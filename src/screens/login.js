@@ -20,8 +20,8 @@ const win = Dimensions.get("window");
 
 export default LoginScreen = (props) => {
   const navigation = useNavigation();
-  const [phone, setPhone] = useState("");
-  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("0337657484");
+  const [password, setPassword] = useState("nhan12345");
   const [isLoading, setIsLoading] = useState(false);
 
   const onLogin = async () => {
@@ -31,6 +31,7 @@ export default LoginScreen = (props) => {
         phone: phone,
         password: password,
       });
+      console.log("login", res)
       if (res.data.code == 1) {
         api.account.save_token(res);
         handleVerifyCustomer();
@@ -91,10 +92,11 @@ export default LoginScreen = (props) => {
           style={{
             flex: 1,
             alignSelf: "stretch",
-            width: win.width - 50,
+            width: 300,
             height: 300,
+            resizeMode: 'contain'
           }}
-          source={require("../../assets/Discount-rafiki.png")}
+          source={require("../../assets/banner5.png")}
         />
       </View>
       <View
@@ -121,7 +123,7 @@ export default LoginScreen = (props) => {
           type="password"
           placeholder="Mật khẩu"
           onChangeText={setPassword}
-          defaultValue='ENjcUSaGUg'
+          defaultValue='nhan12345'
         ></InputItem>
         <Button
           style={{
