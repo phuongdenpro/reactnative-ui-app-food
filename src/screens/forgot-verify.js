@@ -90,8 +90,8 @@ export default ForgotVerifyScreen = (props) => {
                     style={{
                         flex: 1,
                         alignSelf: 'stretch',
-                        width: 300,
-                        height: 300,
+                        width: 250,
+                        height: 250,
                         resizeMode: "contain"
                     }}
                     source={require("../../assets/banner3.png")}
